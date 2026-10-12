@@ -1,0 +1,77 @@
+= Collaboration Profile
+:toc: macro
+
+A realistic professional collaboration profile system to set expectations, assess fit, and anticipate friction points.
+
+toc::[]
+
+== What is this?
+
+This project provides a structured way to document and visualize how you work with others. Unlike a marketing bio or resume, it focuses on *collaboration realities*: your preferences, boundaries, working style, values, and both strengths and gaps.
+
+The result is an interactive visualization that helps teams, managers, and collaborators understand who you are and how best to work with you.
+
+== How it works
+
+The system has two main parts:
+
+. *`collaboration_profile_graph.json`* — Structured data about you
+** Your values, principles, and boundaries
+** Working preferences and behaviors
+** Skills, interests, and development areas
+** Examples and evidence from your experience
+** Interpretations and patterns
+
+. *`index.html`* — Interactive visualization
+** Browse by category (guidance, values, skills, etc.)
+** Filter by evidence type (self-reported, CV claims, examples, hypotheses)
+** Search and explore the full profile
+** Respects light/dark mode preferences
+
+== How to build your own
+
+=== Quick start
+
+. Clone or fork this repository
+. Edit `collaboration_profile_graph.json` with your own information
+. Open `index.html` in a browser to see your profile
+. Share the HTML file or host it anywhere
+
+=== Using an LLM to build your profile
+
+The easiest way to create your profile is through a structured conversation with an LLM (like Claude):
+
+. Have the LLM interview you about your working style
+. Ask it to generate the JSON following the schema in this repository
+. Review and refine the generated profile
+. Use the included HTML viewer to visualize it
+
+The schema is self-documenting — check `collaboration_profile_graph.json` for the structure and metadata fields.
+
+=== What to include
+
+Focus on information that helps others collaborate with you effectively:
+
+* *Do's and Don'ts* — Clear guidance for working together
+* *Values & Boundaries* — What matters most, what's non-negotiable
+* *Working Style* — Preferences, practices, communication patterns
+* *Skills & Gaps* — Honest assessment of strengths and development areas
+* *Examples* — Concrete evidence from your experience
+* *Interpretations* — Patterns and insights about how you work
+
+== Why this matters
+
+Traditional profiles focus on what you've done. Collaboration profiles focus on *how you work*.
+
+This helps:
+
+* Teams assess cultural and working-style fit
+* Managers understand how to support you
+* Collaborators anticipate potential friction
+* You reflect on your own patterns and preferences
+
+== License
+
+This profile template and visualization are provided as-is for anyone to use and adapt.
+
+The specific profile data is personal to the subject and not covered by any license.
