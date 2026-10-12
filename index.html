@@ -1,0 +1,326 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Andrii's Collaboration Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
+<style>
+/* Layout: architecture-doc register. Header + legend, then content column beside a sticky detail panel. */
+:root {
+  --bg: #f3f4f6; --surface: #ffffff; --ink: #18202c; --muted: #576173; --line: #d8dce3; --accent: #2b5a87;
+  --st-self: #5b6678; --st-public: #0e7069; --st-cv: #2457c5; --st-example: #2f7a3a; --st-interp: #a35a0c; --st-hypo: #6d3fd0;
+  --do: #2f7a3a; --never: #b4322e;
+  --f-display: "IBM Plex Serif", Georgia, serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11151b; --surface: #181e26; --ink: #e5e8ed; --muted: #9ba4b2; --line: #2b333e; --accent: #8fb5de;
+  --st-self: #a3adbb; --st-public: #4fc1b6; --st-cv: #7fa6f5; --st-example: #79c487; --st-interp: #e6a65a; --st-hypo: #b39af5;
+  --do: #79c487; --never: #f08a84; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #11151b; --surface: #181e26; --ink: #e5e8ed; --muted: #9ba4b2; --line: #2b333e; --accent: #8fb5de;
+  --st-self: #a3adbb; --st-public: #4fc1b6; --st-cv: #7fa6f5; --st-example: #79c487; --st-interp: #e6a65a; --st-hypo: #b39af5;
+  --do: #79c487; --never: #f08a84; color-scheme: dark }
+
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5; padding: 0 16px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-block: 28px 48px; }
+h1, h2, h3 { text-wrap: balance; margin: 0 }
+.eyebrow { font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted) }
+header { display: grid; gap: 10px; padding-bottom: 20px; border-bottom: 1px solid var(--line) }
+h1 { font-family: var(--f-display); font-weight: 600; font-size: clamp(26px, 4vw, 36px); line-height: 1.15 }
+.purpose { color: var(--muted); max-width: 68ch; margin: 0 }
+
+.toolbar { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; padding-block: 16px }
+.tabs { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden }
+.tabs button { font: 500 13px var(--f-body); color: var(--muted); background: var(--surface); border: 0; padding: 7px 14px; cursor: pointer }
+.tabs button[aria-selected="true"] { background: var(--accent); color: var(--surface) }
+input[type="search"] { font: 14px var(--f-body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 7px 10px; width: min(260px, 100%) }
+label.check { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; color: var(--muted); cursor: pointer }
+button:focus-visible, input:focus-visible, .card:focus-visible, .rel:focus-visible, .chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+
+.legend { display: flex; flex-wrap: wrap; gap: 8px }
+.chip { display: inline-flex; align-items: center; gap: 6px; font: 12px var(--f-body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px 3px 8px; cursor: pointer }
+.chip[aria-pressed="false"] { opacity: .45; text-decoration: line-through }
+.sw { width: 10px; height: 10px; border-radius: 50%; background: var(--c); flex: none }
+.sw.hypo { background: transparent; border: 2px dashed var(--c) }
+.legend-note { font-size: 12px; color: var(--muted); width: 100% }
+
+.layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 24px; align-items: start }
+@media (max-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr) } }
+
+section.group { display: grid; gap: 12px; padding-block: 8px 20px }
+section.group h2 { font-family: var(--f-display); font-weight: 500; font-size: 20px; display: flex; gap: 10px; align-items: baseline }
+section.group h2 .count { font: 12px var(--f-mono); color: var(--muted) }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px }
+.card { display: grid; gap: 6px; align-content: start; background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--c); border-radius: 4px; padding: 10px 12px 12px; cursor: pointer; text-align: left; font: inherit; color: inherit; min-width: 0 }
+.card.hypo { border-style: dashed; border-left-style: dashed }
+.card.sel { box-shadow: 0 0 0 2px var(--accent) }
+.card h3 { font-size: 14.5px; font-weight: 600; line-height: 1.35 }
+.card p { margin: 0; font-size: 13.5px; color: var(--muted) }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font: 11px var(--f-mono); color: var(--muted); text-transform: uppercase; letter-spacing: .04em }
+.tag { border: 1px solid currentColor; border-radius: 3px; padding: 0 5px; line-height: 17px }
+.tag.do { color: var(--do) } .tag.never { color: var(--never) }
+.tag.st { color: var(--c) }
+
+aside.detail { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px; display: grid; gap: 12px; max-height: calc(100vh - 32px); overflow: auto }
+@media (max-width: 900px) { aside.detail { position: static; max-height: none } }
+aside.detail h2 { font-family: var(--f-display); font-weight: 600; font-size: 20px; line-height: 1.25 }
+aside.detail p { margin: 0 }
+.dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 13px }
+.dl dt { color: var(--muted); font-family: var(--f-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; padding-top: 2px }
+.dl dd { margin: 0; min-width: 0 }
+.rels { display: grid; gap: 6px }
+.rels h3 { font: 500 11px var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted) }
+.rel { display: block; width: 100%; text-align: left; font: 13px var(--f-body); color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 4px; padding: 6px 8px; cursor: pointer }
+.rel:hover { border-color: var(--accent) }
+.rel .et { font: 11px var(--f-mono); color: var(--accent); display: block }
+.empty { color: var(--muted); font-size: 13px }
+
+.mapbox { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 6px }
+.mapbox svg { display: block }
+.mapbox text { font-family: var(--f-body); font-size: 12px; fill: var(--ink) }
+.mapbox .colh { font-family: var(--f-mono); font-size: 11px; fill: var(--muted); letter-spacing: .06em; text-transform: uppercase }
+.mapbox .n rect { fill: var(--bg); stroke: var(--c); stroke-width: 1.2 }
+.mapbox .n.hypo rect { stroke-dasharray: 4 3 }
+.mapbox .n { cursor: pointer }
+.mapbox .n.sel rect { stroke: var(--accent); stroke-width: 2.4 }
+.mapbox .n.dim { opacity: .25 }
+.mapbox path.e { fill: none; stroke: var(--line); stroke-width: 1.2 }
+.mapbox path.e.on { stroke: var(--accent); stroke-width: 1.8 }
+.mapbox path.e.dim { opacity: .2 }
+.note { font-size: 12.5px; color: var(--muted); margin: 10px 0 0 }
+
+.loader { display: grid; gap: 10px; padding: 24px; background: var(--surface); border: 1px dashed var(--line); border-radius: 6px }
+footer { margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--muted); display: grid; gap: 4px }
+@media (prefers-reduced-motion: no-preference) { .card, .rel { transition: border-color .15s, box-shadow .15s } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow" id="eyebrow">Collaboration profile</div>
+    <h1 id="subject">Collaboration profile</h1>
+    <p class="purpose" id="purpose"></p>
+  </header>
+
+  <div class="toolbar">
+    <div class="tabs" role="tablist" aria-label="View">
+      <button id="tab-profile" role="tab" aria-selected="true">Profile</button>
+      <button id="tab-map" role="tab" aria-selected="false">Map</button>
+    </div>
+    <input type="search" id="q" placeholder="Search the profile" aria-label="Search the profile">
+    <label class="check"><input type="checkbox" id="full"> Include on-request context</label>
+  </div>
+  <div class="legend" id="legend" aria-label="Filter by evidence"></div>
+
+  <div class="layout" style="margin-top:18px">
+    <main id="content" style="min-width:0">
+      <div class="loader" id="loader">
+        <strong>Loading profile data…</strong>
+        <span class="empty">If the data file can't be loaded automatically, open collaboration_profile_graph.json here.</span>
+        <input type="file" id="file" accept="application/json,.json" aria-label="Open graph JSON">
+      </div>
+    </main>
+    <aside class="detail" id="detail" aria-live="polite">
+      <p class="empty">Select an item to see its evidence, sources and relationships.</p>
+    </aside>
+  </div>
+
+  <footer id="footer"></footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  const DATA_URL = "collaboration_profile_graph.json";
+  const STATUS_VAR = {
+    self_reported: "--st-self", self_reported_with_limited_experience: "--st-self",
+    public_self_statement: "--st-public", cv_claim: "--st-cv",
+    user_reported_example: "--st-example", user_interpretation: "--st-interp", inferred_hypothesis: "--st-hypo"
+  };
+  const STATUS_SHORT = {
+    self_reported: "Self-reported", self_reported_with_limited_experience: "Self-reported (limited exp.)",
+    public_self_statement: "Public statement", cv_claim: "CV claim", user_reported_example: "Reported example",
+    user_interpretation: "Own interpretation", inferred_hypothesis: "Hypothesis"
+  };
+  const MAP_ORDER = ["foundations", "working_style", "capabilities", "evidence", "synthesis", "fit"];
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const human = (s) => String(s).replace(/_/g, " ");
+
+  let G = null, byId = {}, groupOf = {}, state = { view: "profile", q: "", full: false, off: new Set(), sel: null };
+
+  function load(data) {
+    G = data;
+    const meta = G.metadata || {}, defs = meta.defaults || {};
+    byId = {}; groupOf = {};
+    const typeGroup = {};
+    Object.entries(meta.groups || {}).forEach(([g, v]) => v.types.forEach((t) => (typeGroup[t] = g)));
+    G.nodes.forEach((n) => {
+      n.disclosure = n.disclosure || defs.disclosure || "public";
+      n.sources = n.sources || defs.sources || [];
+      byId[n.id] = n; groupOf[n.id] = typeGroup[n.type] || "other";
+      n.out = []; n.in = [];
+    });
+    G.edges.forEach((e) => { if (byId[e.from] && byId[e.to]) { byId[e.from].out.push(e); byId[e.to].in.push(e); } });
+
+    $("subject").textContent = G.subject || "Collaboration profile";
+    $("purpose").textContent = G.profile_purpose || "";
+    $("eyebrow").textContent = "Collaboration profile · schema " + (G.schema_version || "?") + (meta.updated ? " · updated " + meta.updated : "");
+    const fu = (G.interview_state && G.interview_state.open_followups) || [];
+    $("footer").innerHTML =
+      "<div>" + esc(meta.verification || "") + "</div>" +
+      "<div>Sources: " + Object.values(meta.sources || {}).map(esc).join(" · ") + "</div>" +
+      (fu.length ? "<div>Open follow-ups: " + fu.map(esc).join(" · ") + "</div>" : "") +
+      "<div>The on-request filter is a reading view, not access control: anyone with this page can switch it.</div>";
+    try { const v = localStorage.getItem("cp.view"); if (v === "map" || v === "profile") state.view = v; } catch (e) {}
+    renderLegend(); render();
+  }
+
+  function visible(n) {
+    if (!state.full && n.disclosure !== "public") return false;
+    if (state.off.has(n.evidence_status)) return false;
+    if (state.q) {
+      const hay = (n.label + " " + n.description + " " + n.id + " " + n.type).toLowerCase();
+      if (!state.q.split(/\s+/).every((w) => hay.includes(w))) return false;
+    }
+    return true;
+  }
+  const cvar = (n) => "var(" + (STATUS_VAR[n.evidence_status] || "--st-self") + ")";
+
+  function renderLegend() {
+    const st = (G.metadata && G.metadata.evidence_statuses) || {};
+    const seen = [...new Set(G.nodes.map((n) => n.evidence_status))];
+    $("legend").innerHTML = seen.map((s) =>
+      '<button class="chip" aria-pressed="' + !state.off.has(s) + '" data-st="' + esc(s) + '" title="' + esc(st[s] || "") + '" style="--c:var(' + (STATUS_VAR[s] || "--st-self") + ')">' +
+      '<span class="sw' + (s === "inferred_hypothesis" ? " hypo" : "") + '"></span>' + esc(STATUS_SHORT[s] || human(s)) + "</button>").join("") +
+      '<div class="legend-note">Evidence type. Tap to filter. Hypotheses are dashed and provisional.</div>';
+  }
+
+  function tags(n) {
+    let t = '<span class="tag st" style="--c:' + cvar(n) + '">' + esc(STATUS_SHORT[n.evidence_status] || human(n.evidence_status)) + "</span>";
+    if (n.stance) t += '<span class="tag">' + esc((G.metadata.stances && n.stance === "learn_on_demand") ? "learn when needed" : human(n.stance)) + "</span>";
+    if (n.polarity) t += '<span class="tag ' + esc(n.polarity) + '">' + esc(n.polarity) + "</span>";
+    if (n.disclosure !== "public") t += '<span class="tag">' + esc(human(n.disclosure)) + "</span>";
+    return t;
+  }
+
+  function renderProfile() {
+    const groups = Object.entries(G.metadata.groups || {}).sort((a, b) => a[1].order - b[1].order);
+    let html = "";
+    groups.forEach(([g, gm]) => {
+      let nodes = G.nodes.filter((n) => groupOf[n.id] === g && visible(n));
+      if (g === "fit") nodes.sort((a, b) => (a.type === "guidance" ? (a.polarity === "do" ? 0 : 1) : 2) - (b.type === "guidance" ? (b.polarity === "do" ? 0 : 1) : 2));
+      if (!nodes.length) return;
+      html += '<section class="group"><h2>' + esc(gm.label) + '<span class="count">' + nodes.length + "</span></h2><div class=\"cards\">" +
+        nodes.map((n) =>
+          '<button class="card' + (n.evidence_status === "inferred_hypothesis" ? " hypo" : "") + (state.sel === n.id ? " sel" : "") + '" data-id="' + esc(n.id) + '" style="--c:' + cvar(n) + '">' +
+          '<div class="meta"><span>' + esc(human(n.type)) + "</span>" + tags(n) + "</div>" +
+          "<h3>" + esc(n.label) + "</h3><p>" + esc(n.description) + "</p></button>").join("") + "</div></section>";
+    });
+    $("content").innerHTML = html || '<p class="empty">Nothing matches the current filters.</p>';
+  }
+
+  function trunc(s, max) { return s.length > max ? s.slice(0, max - 1) + "…" : s; }
+
+  function renderMap() {
+    const COLW = 210, GAP = 70, NH = 30, VG = 8, TOP = 44, PAD = 16;
+    const pos = {};
+    let maxH = 0;
+    MAP_ORDER.forEach((g, ci) => {
+      const nodes = G.nodes.filter((n) => groupOf[n.id] === g && visible(n));
+      nodes.forEach((n, i) => { pos[n.id] = { x: PAD + ci * (COLW + GAP), y: TOP + i * (NH + VG), c: ci }; });
+      maxH = Math.max(maxH, TOP + nodes.length * (NH + VG));
+    });
+    const W = PAD * 2 + MAP_ORDER.length * COLW + (MAP_ORDER.length - 1) * GAP, H = maxH + PAD;
+    const sel = state.sel && pos[state.sel] ? state.sel : null;
+    const nbr = new Set();
+    if (sel) { nbr.add(sel); byId[sel].out.forEach((e) => nbr.add(e.to)); byId[sel].in.forEach((e) => nbr.add(e.from)); }
+    let edges = "";
+    G.edges.forEach((e) => {
+      const a = pos[e.from], b = pos[e.to]; if (!a || !b) return;
+      let d;
+      const ay = a.y + NH / 2, by = b.y + NH / 2;
+      if (a.c === b.c) { const x = a.x + COLW, k = 28 + Math.abs(by - ay) * 0.15; d = "M" + x + " " + ay + " C" + (x + k) + " " + ay + " " + (x + k) + " " + by + " " + x + " " + by; }
+      else if (a.c < b.c) { const x1 = a.x + COLW, x2 = b.x, m = (x1 + x2) / 2; d = "M" + x1 + " " + ay + " C" + m + " " + ay + " " + m + " " + by + " " + x2 + " " + by; }
+      else { const x1 = a.x, x2 = b.x + COLW, m = (x1 + x2) / 2; d = "M" + x1 + " " + ay + " C" + m + " " + ay + " " + m + " " + by + " " + x2 + " " + by; }
+      const on = sel && (e.from === sel || e.to === sel);
+      edges += '<path class="e' + (on ? " on" : sel ? " dim" : "") + '" d="' + d + '"><title>' + esc(byId[e.from].label + " · " + human(e.type) + " · " + byId[e.to].label) + "</title></path>";
+    });
+    let heads = MAP_ORDER.map((g, ci) => '<text class="colh" x="' + (PAD + ci * (COLW + GAP)) + '" y="24">' + esc((G.metadata.groups[g] || {}).label || g) + "</text>").join("");
+    let nodes = "";
+    Object.entries(pos).forEach(([id, p]) => {
+      const n = byId[id];
+      const cls = "n" + (n.evidence_status === "inferred_hypothesis" ? " hypo" : "") + (id === sel ? " sel" : "") + (sel && !nbr.has(id) ? " dim" : "");
+      nodes += '<g class="' + cls + '" data-id="' + esc(id) + '" tabindex="0" role="button" style="--c:' + cvar(n) + '">' +
+        '<rect x="' + p.x + '" y="' + p.y + '" width="' + COLW + '" height="' + NH + '" rx="4"></rect>' +
+        '<text x="' + (p.x + 10) + '" y="' + (p.y + NH / 2 + 4) + '">' + esc(trunc(n.label, 31)) + "</text><title>" + esc(n.label) + "</title></g>";
+    });
+    $("content").innerHTML = '<div class="mapbox"><svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="Relationship map">' + edges + heads + nodes + "</svg></div>" +
+      '<p class="note">Columns run from foundations to working guidance. Select an item to highlight its relationships; scroll sideways on small screens.</p>';
+  }
+
+  function renderDetail() {
+    const n = state.sel && byId[state.sel];
+    if (!n) { $("detail").innerHTML = '<p class="empty">Select an item to see its evidence, sources and relationships.</p>'; return; }
+    const meta = G.metadata || {};
+    const relBtn = (other, label) => '<button class="rel" data-id="' + esc(other.id) + '"><span class="et">' + esc(label) + "</span>" + esc(other.label) + "</button>";
+    const outs = n.out.map((e) => byId[e.to]).filter((o) => o && (state.full || o.disclosure === "public"));
+    const ins = n.in.map((e) => byId[e.from]).filter((o) => o && (state.full || o.disclosure === "public"));
+    const outHtml = n.out.filter((e) => outs.includes(byId[e.to])).map((e) => relBtn(byId[e.to], human(e.type) + " →")).join("");
+    const inHtml = n.in.filter((e) => ins.includes(byId[e.from])).map((e) => relBtn(byId[e.from], "← " + human(e.type))).join("");
+    $("detail").innerHTML =
+      '<div class="meta"><span>' + esc(human(n.type)) + "</span>" + tags(n) + "</div>" +
+      "<h2>" + esc(n.label) + "</h2><p>" + esc(n.description) + "</p>" +
+      '<dl class="dl">' +
+      "<dt>Evidence</dt><dd>" + esc((meta.evidence_statuses || {})[n.evidence_status] || human(n.evidence_status)) + "</dd>" +
+      (n.stance ? "<dt>Stance</dt><dd>" + esc((meta.stances || {})[n.stance] || human(n.stance)) + "</dd>" : "") +
+      "<dt>Sources</dt><dd>" + n.sources.map((s) => esc((meta.sources || {})[s] || s)).join("<br>") + "</dd>" +
+      "<dt>Disclosure</dt><dd>" + esc((meta.disclosure_levels || {})[n.disclosure] || n.disclosure) + "</dd>" +
+      '<dt>ID</dt><dd style="font-family:var(--f-mono);font-size:12px;overflow-wrap:anywhere">' + esc(n.id) + "</dd></dl>" +
+      (outHtml ? '<div class="rels"><h3>Leads to</h3>' + outHtml + "</div>" : "") +
+      (inHtml ? '<div class="rels"><h3>Comes from</h3>' + inHtml + "</div>" : "") +
+      (!outHtml && !inHtml ? '<p class="empty">No recorded relationships.</p>' : "");
+  }
+
+  function render() {
+    if (!G) return;
+    $("tab-profile").setAttribute("aria-selected", state.view === "profile");
+    $("tab-map").setAttribute("aria-selected", state.view === "map");
+    if (state.sel && !visible(byId[state.sel])) state.sel = null;
+    state.view === "map" ? renderMap() : renderProfile();
+    renderDetail();
+  }
+
+  function select(id) {
+    state.sel = state.sel === id && state.view === "map" ? null : id;
+    render();
+    if (window.matchMedia("(max-width: 900px)").matches && state.sel) $("detail").scrollIntoView({ block: "start" });
+  }
+
+  document.addEventListener("click", (ev) => {
+    const chip = ev.target.closest(".chip");
+    if (chip) { const s = chip.dataset.st; state.off.has(s) ? state.off.delete(s) : state.off.add(s); renderLegend(); render(); return; }
+    const t = ev.target.closest("[data-id]");
+    if (t) select(t.dataset.id);
+  });
+  document.addEventListener("keydown", (ev) => {
+    if ((ev.key === "Enter" || ev.key === " ") && ev.target.matches && ev.target.matches("g[data-id]")) { ev.preventDefault(); select(ev.target.dataset.id); }
+  });
+  $("tab-profile").addEventListener("click", () => { state.view = "profile"; try { localStorage.setItem("cp.view", "profile"); } catch (e) {} render(); });
+  $("tab-map").addEventListener("click", () => { state.view = "map"; try { localStorage.setItem("cp.view", "map"); } catch (e) {} render(); });
+  $("q").addEventListener("input", (ev) => { state.q = ev.target.value.trim().toLowerCase(); render(); });
+  $("full").addEventListener("change", (ev) => { state.full = ev.target.checked; render(); });
+  $("file").addEventListener("change", (ev) => {
+    const f = ev.target.files && ev.target.files[0]; if (!f) return;
+    const r = new FileReader();
+    r.onload = () => { try { load(JSON.parse(r.result)); } catch (e) { $("loader").querySelector("strong").textContent = "That file isn't valid profile JSON: " + e.message; } };
+    r.readAsText(f);
+  });
+
+  fetch(DATA_URL).then((r) => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(load)
+    .catch(() => { $("loader").querySelector("strong").textContent = "Open the profile data file to view it."; });
+})();
+</script>
+
+</body></html>
